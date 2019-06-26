@@ -1,19 +1,25 @@
-const express = require('express')
-const cors = require('cors')
-const bodyParser = require('body-parser')
-const mongoose = require('mongoose')
-const StudentRoutes = require('./routes/students')
-mongoose.connect('mongodb://localhost:27017/students', { useNewUrlParser: true })
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const StudentRoutes = require('./routes/students');
+mongoose.connect('mongodb://localhost:27017/students', {useNewUrlParser: true});
+// fix deprecation warning
+mongoose.set('useCreateIndex', true);
 
-const app = express()
-app.use(cors())
-app.use(bodyParser())
+const app = express();
+app.use(cors());
+
+// app.use(bodyParser()); DEPRECATED
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
+
 app.get('/', function(request, response) {
-	console.log('We live in the GET route')
-	response.json({ status: 'ok', message: 'Welcome to my server.' })
-})
-app.use('/students', StudentRoutes)
+  console.log('We live in the GET route');
+  response.json({status: 'ok', message: 'Welcome to my server.'});
+});
+app.use('/students', StudentRoutes);
 
 app.listen(8000, function() {
-	console.log('Server is listening on PORT 8000 -- hello everyone')
-})
+  console.log('Server is listening on PORT 8000 -- hello everyone');
+});
