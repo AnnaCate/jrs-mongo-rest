@@ -10,16 +10,16 @@ mongoose.set('useCreateIndex', true);
 const app = express();
 app.use(cors());
 
-// app.use(bodyParser()); DEPRECATED
+// app.use(bodyParser()); DEPRECATED - use the 2 lines below instead
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 
-app.get('/', function(request, response) {
-  console.log('We live in the GET route');
-  response.json({status: 'ok', message: 'Welcome to my server.'});
-});
+app.get('/', (req, res) =>
+  res.json({status: 'ok', message: 'Welcome to my server.'})
+);
+
 app.use('/students', StudentRoutes);
 
-app.listen(8000, function() {
-  console.log('Server is listening on PORT 8000 -- hello everyone');
-});
+app.listen(8000, () =>
+  console.log('Server is listening on PORT 8000 -- hello everyone')
+);
