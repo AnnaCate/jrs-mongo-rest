@@ -1,6 +1,23 @@
+/* ===================================== 
+   Public API Request
+======================================== */
+
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html,
 body {
-  margin: 0;
-  padding: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: rgba(235, 235, 235, 0.9);
 }
 
 header,
@@ -24,33 +41,20 @@ main:after {
 
 header,
 footer {
-  background-color: hotpink;
+  background-color: purple;
   color: #fff;
 }
 
-nav {
-  display: block;
+h1 {
+  font-size: 2em;
+  padding: 0.5em;
+  margin-top: 0;
 }
 
-nav > ul {
-  margin: 0;
-  padding: 0;
-  text-decoration: none;
+footer > p {
+  padding: 1em;
 }
-nav li {
-  display: inline-block;
-  padding: 10px;
-}
-nav a {
-  text-decoration: none;
-  color: black;
-}
-nav li:hover {
-  background-color: blue;
-}
-nav li:hover a {
-  color: white;
-}
+
 .row {
   width: 100%;
   display: block;
@@ -92,11 +96,37 @@ nav li:hover a {
   width: 68%;
 }
 
+/* #students-header > h1 {
+  float: left;
+} */
+
+#add-new {
+  background-color: lightseagreen;
+  border-radius: 10px;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  font-size: 16px;
+}
+
+#add-new:hover {
+  background-color: rgb(21, 116, 111);
+  cursor: pointer;
+}
+
+.studentLi {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
 #studentsList > ul {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
   list-style-type: none;
+  padding: 0;
+  margin: 0;
 }
 
 #studentsList > ul > li {
@@ -106,18 +136,28 @@ nav li:hover a {
   height: 300;
   width: 252;
 }
-#container-links {
+
+.container-links {
   display: flex;
   flex-direction: row nowrap;
   justify-content: space-between;
 }
 
-#studentsList > ul > li > div > h3 {
+h3 {
   margin-top: 0;
 }
 
+.info-div > img {
+  width: 188px;
+  height: auto;
+}
+
+.info-div > p {
+  width: 188px;
+}
+
 /* ===================================== 
-   Modal
+   Details Modal
 ======================================== */
 
 .modal-container {
@@ -127,6 +167,7 @@ nav li:hover a {
   bottom: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.7);
+  text-align: center;
 }
 
 .modal {
@@ -134,7 +175,7 @@ nav li:hover a {
   width: 95%;
   max-width: 420px;
   min-height: 415px;
-  margin: 3rem auto auto;
+  margin: 10px auto auto;
   padding-bottom: 15px;
   background: rgba(255, 255, 255, 1);
   border-radius: 0.25em;
@@ -200,4 +241,30 @@ nav li:hover a {
   border-radius: 0.35em;
   transition: 0.4s ease-out;
   outline: none;
+}
+
+/* ===================================== 
+   Edit Modal
+======================================== */
+
+.edit-student-form > form,
+.add-student-form > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.edit-student-form > form > input,
+.edit-student-form > form > textarea,
+.add-student-form > form > input,
+.add-student-form > form > textarea {
+  width: 200px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+#name-edit,
+#name {
+  margin-top: 100px;
 }
