@@ -2,6 +2,8 @@
 
 This app is a CRUD editor for a list of students and some basic information about them, including name, age, photo, and bio. The data are stored in mongoDB.
 
+View live webpage [here](https://annacate.github.io/jrs-mongo-rest/web/index.html).
+
 ## Features
 
 The app allows the user to view, add, edit, and delete students from the database.
