@@ -5,12 +5,14 @@ const router = express.Router();
 // /students/
 router
   .route('/')
-  .get((req, res) => {
-    Student.find({}).then(students => res.json({status: 'ok', data: students}));
+  .get(async (req, res) => {
+    await Student.find({}).then(students =>
+      res.json({status: 'ok', data: students})
+    );
   })
-  .post((req, res) => {
+  .post(async (req, res) => {
     const rawStudent = req.body;
-    const newStudent = new Student(rawStudent);
+    const newStudent = await new Student(rawStudent);
 
     newStudent.save();
 
@@ -20,13 +22,13 @@ router
 // /students/:studentId
 router
   .route('/:studentId')
-  .get((req, res) => {
-    Student.findById(req.params.studentId).then(foundStudent =>
+  .get(async (req, res) => {
+    await Student.findById(req.params.studentId).then(foundStudent =>
       res.json(foundStudent)
     );
   })
-  .put((req, res) => {
-    Student.findById(req.params.studentId).then(foundStudent => {
+  .put(async (req, res) => {
+    await Student.findById(req.params.studentId).then(foundStudent => {
       foundStudent.name = req.body.name;
       foundStudent.age = req.body.age;
       foundStudent.photoUrl = req.body.photoUrl;
@@ -37,8 +39,8 @@ router
       res.json(foundStudent);
     });
   })
-  .delete((req, response) => {
-    Student.findByIdAndDelete(req.params.studentId).then(res => {
+  .delete(async (req, response) => {
+    await Student.findByIdAndDelete(req.params.studentId).then(res => {
       response.json({status: 'ok', res: req.params.studentId});
     });
   });
