@@ -79,22 +79,18 @@ const page = {
   clickDetails: () => {
     document.addEventListener('click', e => {
       e.preventDefault();
-      const data = e.target.dataset;
-      const isMoreDetail = e.target.classList.contains('detailLink');
-      if (isMoreDetail) {
+      if (e.target.classList.contains('detailLink')) {
         page.createModal();
-        page.getSingleStudent(data.id).then(page.populateDetailsModal);
+        page.getSingleStudent(e.target.dataset.id).then(page.populateDetailsModal);
       }
     });
   },
   clickEdit: () => {
     document.addEventListener('click', e => {
       e.preventDefault();
-      const data = e.target.dataset;
-      const isEdit = e.target.classList.contains('editLink');
-      if (isEdit) {
+      if (e.target.classList.contains('editLink')) {
         page.createModal();
-        page.getSingleStudent(data.id).then(page.populateEditModal);
+        page.getSingleStudent(e.target.dataset.id).then(page.populateEditModal);
       }
     });
   },
